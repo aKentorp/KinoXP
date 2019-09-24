@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ShowTest {
 
+    private Show show = new Show();
     @Test
     void getTitle() {
     }
@@ -22,18 +23,22 @@ class ShowTest {
 
     @Test
     void getAgeLimit() {
+        assertEquals(12, show.getAgeLimit());
     }
 
     @Test
     void setAgeLimit() {
+        assertEquals(12, show.setAgeLimit());
     }
 
     @Test
     void getTheaterNumber() {
+        assertEquals(2, show.getTheaterNumber());
     }
 
     @Test
     void setTheaterNumber() {
+        assertEquals(2, show.setTheaterNumber());
     }
 
     @Test
