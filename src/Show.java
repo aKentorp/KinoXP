@@ -10,6 +10,16 @@ public class Show {
     private Date startTime;
     private Date endTime;
 
+    public Show(String title, String genre, int ageLimit, int theaterNumber, Date showDate, Date startTime, Date endTime) {
+        this.title = title;
+        this.genre = genre;
+        this.ageLimit = ageLimit;
+        this.theaterNumber = theaterNumber;
+        this.showDate = showDate;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+
     public String getTitle() {
         return title;
     }
