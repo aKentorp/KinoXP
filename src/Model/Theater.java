@@ -1,3 +1,5 @@
+package Model;
+
 public class Theater {
 
     public Theater(int theaterNumber, int numberOfSeats) {
