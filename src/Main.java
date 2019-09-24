@@ -2,12 +2,7 @@ public class Main {
 
     public static void main(String[] args) {
 
+        System.out.println("sup");
 
-        //CK.ommentar
-        //hey all
-        System.out.println("halle");
-
-
-        //sup
     }
 }
