@@ -22,4 +22,17 @@ public class Booking {
     public int getShowId() { return showId; }
 
     public void setShowId(int showId) { this.showId = showId; }
+
+    public int getBookingId() {
+        return bookingId;
+    }
+
+    public void setBookingId(int bookingId) {
+        this.bookingId = bookingId;
+    }
+
+    @Override
+    public String toString(){
+        return getPhoneNumber() + " " + getShowId() + " " + getBookingId() +"\n";
+    }
 }

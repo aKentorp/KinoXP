@@ -1,4 +1,5 @@
 import Model.Show;
+import Repos.BookingRepo;
 import Repos.ShowRepo;
 import Repos.TheaterRepo;
 
@@ -19,5 +20,9 @@ public class Main {
 
         ShowRepo sp = new ShowRepo();
         sp.createShow();
+
+        BookingRepo bp = new BookingRepo();
+        bp.createBooking();
+
     }
 }
