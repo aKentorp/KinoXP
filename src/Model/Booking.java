@@ -1,12 +1,14 @@
 package Model;
 
 public class Booking {
+    private int bookingId;
     private int phoneNumber;
     private int showId;
 
-    public Booking(int phoneNumber, int showId) {
+    public Booking(int phoneNumber, int showId, int bookingId) {
         this.phoneNumber = phoneNumber;
         this.showId = showId;
+        this.bookingId = bookingId;
     }
 
     public int getPhoneNumber() {
@@ -20,8 +22,4 @@ public class Booking {
     public int getShowId() { return showId; }
 
     public void setShowId(int showId) { this.showId = showId; }
-
-    public void removeAvailableSeatFromShow(){
-
-    }
 }
