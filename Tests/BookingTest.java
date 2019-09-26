@@ -14,7 +14,7 @@ class BookingTest {
     void getPhoneNumber() {
         List<Show> showList = new ArrayList<>();
         showList.add(new Show(1, "Avengers", "Action", 18, 1, new Date(), 1,2 ));
-        Booking booking = new Booking(12345678, 1);
+        Booking booking = new Booking(12345678, 1, 1);
 
         assertEquals(12345678, booking.getPhoneNumber());
     }

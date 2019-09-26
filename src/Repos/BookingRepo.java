@@ -11,13 +11,13 @@ public class BookingRepo {
 
 
 
-    public List<Booking> createBookingList(){
+    public ArrayList<Booking> createBookingList(){
         try {
             Scanner bookingScanner = new Scanner(new File("textFiles/bookings.txt"));
         }catch(Exception e){
             System.out.println(e);
         }
-        List<Booking> bookingList = new ArrayList<>();
+        ArrayList<Booking> bookingList = new ArrayList<>();
 
 
         return bookingList;
