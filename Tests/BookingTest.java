@@ -14,14 +14,7 @@ class BookingTest {
 
     private Booking book =new Booking(12345678,1,2);
 
-    @Test
-    void getPhoneNumber() {
-        List<Show> showList = new ArrayList<>();
-        showList.add(new Show(1, "Avengers", "Action", 18, 1, new Date(), 1,2 ));
-        Booking booking = new Booking(12345678, 1,2);
 
-        assertEquals(12345678, booking.getPhoneNumber());
-    }
     @Test
     void createBooking(){
         List<Booking> bookList = new ArrayList<>();

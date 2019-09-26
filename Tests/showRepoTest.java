@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
 class showRepoTest {
     private TheaterRepo theaterRepo = new TheaterRepo();
     private ShowRepo showRepo = new ShowRepo();
-    private Show show1 = new Show(1, "The Horror Show!", "horror", 16, 1, new Date(2019-9-26), 2130, 2300);
+    private Show show1 = new Show(1, 2, "The Horror Show!", "horror", 16,  new Date(2019-9-26), 2130, 2300);
 
     @Test
     void createShow() {
