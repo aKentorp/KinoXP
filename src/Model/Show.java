@@ -4,16 +4,16 @@ import java.util.Date;
 
 public class Show {
     private int showId;
+    private int theaterNumber;
     private String title;
     private String genre;
     private int ageLimit;
-    private int theaterNumber;
     private Date showDate;
     private int startTime; //militær format eg. 2130 for 21:30
     private int endTime;
     private int remainingSeats;
 
-    public Show(int showId, String title, String genre, int ageLimit, int theaterNumber, Date showDate, int startTime, int endTime) {
+    public Show(int showId, int theaterNumber, String title, String genre, int ageLimit, Date showDate, int startTime, int endTime) {
         this.showId = showId;
         this.title = title;
         this.genre = genre;
