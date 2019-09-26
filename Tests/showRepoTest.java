@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.IsCollectionContaining.hasItem;
 
 class showRepoTest {
     private TheaterRepo theaterRepo = new TheaterRepo();
@@ -21,7 +21,5 @@ class showRepoTest {
         actualShows.add(show1); //Listen får tilføjet et show
 
         assertThat(actualShows, hasItem(show1));  //arrerter at actualShows har item 'show1', som det burde, da det lige er blevet tilføjet
-
-
     }
 }
