@@ -1,20 +1,13 @@
 package Model;
 
 public class Theater {
+    private int theaterNumber;
+    private int numberOfSeats;
 
     public Theater(int theaterNumber, int numberOfSeats) {
         this.theaterNumber = theaterNumber;
         this.numberOfSeats = numberOfSeats;
     }
-
-    public Theater() {
-    }
-
-    private int theaterNumber;
-    private int numberOfSeats;
-
-
-
 
     public int getTheaterNumber() {
         return theaterNumber;
@@ -33,7 +26,7 @@ public class Theater {
     }
 
     @Override
-    public String toString() {
-        return "Theater number: " + this.theaterNumber + "\n Number of seats: " + this.numberOfSeats;
+    public String toString(){
+        return getTheaterNumber() + " " + getNumberOfSeats() + "\n";
     }
 }

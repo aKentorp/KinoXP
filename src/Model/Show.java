@@ -3,7 +3,7 @@ package Model;
 import java.util.Date;
 
 public class Show {
-
+    private int showId;
     private String title;
     private String genre;
     private int ageLimit;
@@ -13,7 +13,8 @@ public class Show {
     private int endTime;
     private int remainingSeats;
 
-    public Show(String title, String genre, int ageLimit, int theaterNumber, Date showDate, int startTime, int endTime) {
+    public Show(int showId, String title, String genre, int ageLimit, int theaterNumber, Date showDate, int startTime, int endTime) {
+        this.showId = showId;
         this.title = title;
         this.genre = genre;
         this.ageLimit = ageLimit;
@@ -22,6 +23,14 @@ public class Show {
         this.startTime = startTime;
         this.endTime = endTime;
      }
+
+    public int getShowId() {
+        return showId;
+    }
+
+    public void setShowId(int showId) {
+        this.showId = showId;
+    }
 
     public String getTitle() {
         return title;
@@ -87,8 +96,11 @@ public class Show {
         this.remainingSeats = remainingSeats;
     }
 
-    @Override
-    public String toString() {
-        return "Title: " + this.title +"\n Genre: " + this.genre + "\n Age limit: " + this.ageLimit + "\n Theater number: " + this.theaterNumber + "\n show date: " + this.showDate + "\n Start time: " + this.startTime + "\n End time: " + this.endTime + "\n Remaining seats: "+ this.remainingSeats;
+    public String toString(String overload) {
+        if(overload.equalsIgnoreCase("display")){
+            return "Title: " + this.title +"\n Genre: " + this.genre + "\n Age limit: " + this.ageLimit + "\n Theater number: " + this.theaterNumber + "\n show date: " + this.showDate + "\n Start time: " + this.startTime + "\n End time: " + this.endTime + "\n Remaining seats: "+ this.remainingSeats;
+        }else{
+            return getShowId() + " " + getTheaterNumber() + " " + getTitle() + " " + getGenre() + " " + getAgeLimit() + " " + getShowDate() + " " + getStartTime() + " " + getEndTime() + "\n";
+        }
     }
 }
