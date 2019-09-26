@@ -9,11 +9,11 @@ public class Show {
     private int ageLimit;
     private int theaterNumber;
     private Date showDate;
-    private Date startTime;
-    private Date endTime;
+    private int startTime; //militær format eg. 2130 for 21:30
+    private int endTime;
     private int remainingSeats;
 
-    public Show(String title, String genre, int ageLimit, int theaterNumber, Date showDate, Date startTime, Date endTime) {
+    public Show(String title, String genre, int ageLimit, int theaterNumber, Date showDate, int startTime, int endTime) {
         this.title = title;
         this.genre = genre;
         this.ageLimit = ageLimit;
@@ -63,19 +63,19 @@ public class Show {
         this.showDate = showDate;
     }
 
-    public Date getStartTime() {
+    public int getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(int startTime) {
         this.startTime = startTime;
     }
 
-    public Date getEndTime() {
+    public int getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(int endTime) {
         this.endTime = endTime;
     }
 
