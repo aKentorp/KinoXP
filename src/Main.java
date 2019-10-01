@@ -18,19 +18,21 @@ public class Main {
 
     public void run(){
         Scanner input = new Scanner(System.in);
-    boolean run = false;
+    int run =1;
 
 
-        try {
-            while (run) {
-                System.out.println("****** KINO ******");
 
+            while (run== 1) {
+                try {
+                    System.out.println("****** KINO ******");
+
+                }catch (InputMismatchException err){
+                        System.out.println("Wrong input");
+                        input.next();
+                    }
             }
-        }
-        catch (InputMismatchException err){
-            System.out.println("Wrong input");
-            input.next();
-        }
+
+
 
 
         TheaterRepo tp = new TheaterRepo();
