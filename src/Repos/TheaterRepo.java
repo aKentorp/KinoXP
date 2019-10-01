@@ -26,6 +26,21 @@ public class TheaterRepo {
         }
     }
 
+    public void theaterToFile(){
+
+        try{
+            BufferedWriter bw = new BufferedWriter(new FileWriter("textFiles/showInfo.txt"));
+
+            for (Theater theater: theaterList) {
+                bw.write(theater.toString());
+            }
+
+            bw.close();
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
+
 
 
 

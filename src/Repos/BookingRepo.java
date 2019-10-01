@@ -46,4 +46,19 @@ public class BookingRepo {
 
         return bookingList;
     }
+
+    public void bookingToFile(){
+
+        try{
+            BufferedWriter bw = new BufferedWriter(new FileWriter("textFiles/showInfo.txt"));
+
+            for (Booking booking: bookingList) {
+                bw.write(booking.toString());
+            }
+
+            bw.close();
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
 }
