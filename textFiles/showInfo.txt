@@ -1,3 +1,2 @@
-1 1 Avatar sci-fi 18 2019-9-12 18 21
-1 1 Die_Hard Action 21 2019-01-01 21 24
-2 1 ShawShank_redemption drama 18 12-12-2010 19 20
+1 2 Shawshank_redemption Drama 18 21 23 24
+2 3 Avatar Horror 12 12-10-2010 13 15

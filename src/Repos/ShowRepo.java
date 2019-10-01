@@ -51,8 +51,7 @@ public class ShowRepo {
 
     public void toFile(){
         Scanner input= new Scanner(System.in);
-        //showList.add(new Show(1, 1, "Avatar", "sci-fi", 18, "2019-9-12", 18, 21));
-        //showList.add(new Show(1, 1, "Die_Hard", "Action", 21, "2019-01-01", 21, 24));
+
         System.out.println("ID for the movie:");
         int tempID= input.nextInt();
         System.out.println("Theater number:");
@@ -74,7 +73,7 @@ public class ShowRepo {
         showList.add(new Show(tempID,tempTheaterNumber,tempTitle,tempGenre,tempAgeLimit,tempShowDate,tempStartTime,tempEndTime));
 
         try{
-            BufferedWriter bw = new BufferedWriter(new FileWriter("textFiles/showInfo.txt"));
+            BufferedWriter bw = new BufferedWriter(new FileWriter("textFiles/showInfo.txt",true));
 
             for (Show show: showList) {
                 bw.write(show.toString("save"));
