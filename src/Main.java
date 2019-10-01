@@ -29,16 +29,22 @@ public class Main {
                     switch (menuInput){
 
                         case 1:
+                            //Bookings
+
                             break;
                         case 2:
+                            //shows
                             break;
                         case 3:
+                            //theater
                             break;
                         case 4:
-                            System.out.println("Quitting the program");
+                            //quit program
+                            System.out.println("Quitting the program...");
                             run=2;
                             break;
                         default:
+                            //if the input is not 1-4, it will start the loop over
                             System.out.println("Not a valid input");
                             break;
                     }
