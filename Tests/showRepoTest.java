@@ -6,11 +6,13 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsCollectionContaining.hasItem;
 
 class showRepoTest {
+    Scanner input = new Scanner(System.in);
     private TheaterRepo theaterRepo = new TheaterRepo();
     private ShowRepo showRepo = new ShowRepo();
     private Show show1 = new Show(1, 2, "The Horror Show!", "horror", 16,  "10-10-2019", 2130, 2300);

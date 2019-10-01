@@ -58,8 +58,9 @@ public class Main {
 
 
     }
-    public void showBooking(){
 
+    public void showBooking(){
+//TODO Når bookings er klar skal den tilføjes her
     }
     public void showShows() throws NoSuchElementException {
         try{
