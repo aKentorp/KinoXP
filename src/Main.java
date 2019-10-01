@@ -24,7 +24,25 @@ public class Main {
 
             while (run== 1) {
                 try {
-                    System.out.println("****** KINO ******");
+                    System.out.println("****** KINO ****** \n -Press 1 for bookings \n -Press 2 for shows \n -Press 3 for theaters \n -Press 4 to exit the program" );
+                    int menuInput= input.nextInt();
+                    switch (menuInput){
+
+                        case 1:
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            System.out.println("Quitting the program");
+                            run=2;
+                            break;
+                        default:
+                            System.out.println("Not a valid input");
+                            break;
+                    }
+
 
                 }catch (InputMismatchException err){
                         System.out.println("Wrong input");
@@ -32,18 +50,6 @@ public class Main {
                     }
             }
 
-
-
-
-        TheaterRepo tp = new TheaterRepo();
-        tp.createTheater(1, 1);
-
-
-        ShowRepo sp = new ShowRepo();
-        sp.createShow();
-
-        BookingRepo bp = new BookingRepo();
-        bp.createBooking();
 
     }
 }
