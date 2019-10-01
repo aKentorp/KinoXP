@@ -24,7 +24,7 @@ public class ShowRepo {
                 String showTitle = "";
                 String showGenre = fileScan.next();
                 int ageLimit = fileScan.nextInt();
-                Date showDate = dateFormat.parse(fileScan.next());
+                String showDate = fileScan.next();
                 int showStart = fileScan.nextInt();
                 int showEnd = fileScan.nextInt();
 
@@ -47,14 +47,16 @@ public class ShowRepo {
     }
 
     public void toFile(){
-        showList.add(new Show(1, 1, "Avatar", "sci-fi", 18, new Date(2019-9-12), 18, 21));
-        showList.add(new Show(1, 1, "Avatar", "sci-fi", 18, new Date(2019-9-12), 21, 24));
+        showList.add(new Show(1, 1, "Avatar", "sci-fi", 18, "2019-9-12", 18, 21));
+        showList.add(new Show(1, 1, "Die Hard", "Action", 21, "2019-01-01", 21, 24));
 
         try{
             BufferedWriter bw = new BufferedWriter(new FileWriter("textFiles/showInfo.txt"));
 
             for (Show show: showList) {
                 bw.write(show.toString("save"));
+                bw.newLine();
+                bw.newLine();
             }
 
             bw.close();

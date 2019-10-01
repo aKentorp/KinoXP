@@ -8,12 +8,12 @@ public class Show {
     private String title;
     private String genre;
     private int ageLimit;
-    private Date showDate;
+    private String showDate;
     private int startTime; //militær format eg. 2130 for 21:30
     private int endTime;
     private int remainingSeats;
 
-    public Show(int showId, int theaterNumber, String title, String genre, int ageLimit, Date showDate, int startTime, int endTime) {
+    public Show(int showId, int theaterNumber, String title, String genre, int ageLimit, String showDate, int startTime, int endTime) {
         this.showId = showId;
         this.title = title;
         this.genre = genre;
@@ -64,11 +64,11 @@ public class Show {
         this.theaterNumber = theaterNumber;
     }
 
-    public Date getShowDate() {
+    public String getShowDate() {
         return showDate;
     }
 
-    public void setShowDate(Date showDate) {
+    public void setShowDate(String showDate) {
         this.showDate = showDate;
     }
 

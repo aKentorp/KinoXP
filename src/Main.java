@@ -23,6 +23,8 @@ public class Main {
 
 
             while (run== 1) {
+                ShowRepo showRepo=new ShowRepo();
+                showRepo.toFile();
                 try {
                     System.out.println("****** KINO ****** \n -Press 1 for bookings \n -Press 2 for shows \n -Press 3 for theaters \n -Press 4 to exit the program" );
                     int menuInput= input.nextInt();
@@ -31,8 +33,10 @@ public class Main {
                         case 1:
                             //Bookings
 
+
                             break;
                         case 2:
+                            showShows();
                             //shows
                             break;
                         case 3:
@@ -57,5 +61,27 @@ public class Main {
             }
 
 
+    }
+    public void showBooking(){
+
+    }
+    public void showShows(){
+        ShowRepo showRepo = new ShowRepo();
+        Scanner showScanner = new Scanner(System.in);
+        System.out.println("-Press 1 to see current shows \n -Press 2 to create show \n -Press 3 to delete a show");
+        int input = showScanner.nextInt();
+        switch (input){
+            case 1:
+                System.out.println("Current shows:");
+                showRepo.readShow();
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            default:
+                System.out.println("wrong input");
+                break;
+        }
     }
 }
