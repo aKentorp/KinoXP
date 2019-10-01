@@ -18,6 +18,7 @@ public class ShowRepo {
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
             while(fileScan.hasNextLine()){
+
                 int showId = fileScan.nextInt();
                 int theaterId = fileScan.nextInt();
                 String[] tempShowTitle = fileScan.next().split("_");
@@ -37,26 +38,27 @@ public class ShowRepo {
                 showList.add(new Show(showId, theaterId, showTitle, showGenre, ageLimit, showDate, showStart, showEnd));
                 //System.out.println(fileScan.next());
             }
+
         }catch (Exception ex){
-            ex.printStackTrace();
+
         }
 
         for (Show show: showList) {
             System.out.println(show.toString("display"));
+            System.out.println();
         }
     }
 
     public void toFile(){
         showList.add(new Show(1, 1, "Avatar", "sci-fi", 18, "2019-9-12", 18, 21));
-        showList.add(new Show(1, 1, "Die Hard", "Action", 21, "2019-01-01", 21, 24));
+        showList.add(new Show(1, 1, "Die_Hard", "Action", 21, "2019-01-01", 21, 24));
 
         try{
             BufferedWriter bw = new BufferedWriter(new FileWriter("textFiles/showInfo.txt"));
 
             for (Show show: showList) {
                 bw.write(show.toString("save"));
-                bw.newLine();
-                bw.newLine();
+
             }
 
             bw.close();

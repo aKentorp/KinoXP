@@ -1,6 +1,2 @@
 1 1 Avatar sci-fi 18 2019-9-12 18 21
-
-
-1 1 Die Hard Action 21 2019-01-01 21 24
-
-
+1 1 Die_Hard Action 21 2019-01-01 21 24

@@ -3,10 +3,7 @@ import Repos.BookingRepo;
 import Repos.ShowRepo;
 import Repos.TheaterRepo;
 
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     private List<Show> showList = new ArrayList<>();
@@ -65,7 +62,7 @@ public class Main {
     public void showBooking(){
 
     }
-    public void showShows(){
+    public void showShows() throws NoSuchElementException {
         ShowRepo showRepo = new ShowRepo();
         Scanner showScanner = new Scanner(System.in);
         System.out.println("-Press 1 to see current shows \n -Press 2 to create show \n -Press 3 to delete a show");
