@@ -15,7 +15,7 @@ public class BookingRepo {
     List<Booking> bookingList = new ArrayList<>();
 
 
-    public void createBooking (){
+    public void toFile (){
     bookingList.add(new Booking(12345678,1,2));
     bookingList.add(new Booking(87654321,2,3));
 
@@ -35,7 +35,7 @@ public class BookingRepo {
 
     }
 
-    public List<Booking> createBookingList(){
+    public List<Booking> createBookingList(){ //TODO finish this
         try {
             Scanner bookingScanner = new Scanner(new File("textFiles/bookings.txt"));
         }catch(Exception e){
@@ -47,18 +47,6 @@ public class BookingRepo {
         return bookingList;
     }
 
-    public void bookingToFile(){
 
-        try{
-            BufferedWriter bw = new BufferedWriter(new FileWriter("textFiles/showInfo.txt"));
 
-            for (Booking booking: bookingList) {
-                bw.write(booking.toString());
-            }
-
-            bw.close();
-        }catch (Exception ex){
-            ex.printStackTrace();
-        }
-    }
 }

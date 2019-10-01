@@ -9,7 +9,7 @@ import java.util.List;
 public class TheaterRepo {
     List<Theater> theaterList = new ArrayList<>();
 
-    public void createTheater(int id, int seatNumbers){
+    public void toFile(int id, int seatNumbers){
         theaterList.add(new Theater(1, 20));
         theaterList.add(new Theater(2, 25));
 
@@ -26,20 +26,8 @@ public class TheaterRepo {
         }
     }
 
-    public void theaterToFile(){
 
-        try{
-            BufferedWriter bw = new BufferedWriter(new FileWriter("textFiles/showInfo.txt"));
-
-            for (Theater theater: theaterList) {
-                bw.write(theater.toString());
-            }
-
-            bw.close();
-        }catch (Exception ex){
-            ex.printStackTrace();
-        }
-    }
+    //TODO Missing - from file to arraylist
 
 
 

@@ -12,7 +12,7 @@ import java.util.*;
 public class ShowRepo {
     List<Show> showList = new ArrayList<>();
 
-    public void readShow(int ll){
+    public void readShow(){
         try{
             Scanner fileScan = new Scanner(new File("textFiles/showInfo.txt"));
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -46,7 +46,7 @@ public class ShowRepo {
         }
     }
 
-    public void showToFile(){
+    public void toFile(){
         showList.add(new Show(1, 1, "Avatar", "sci-fi", 18, new Date(2019-9-12), 18, 21));
         showList.add(new Show(1, 1, "Avatar", "sci-fi", 18, new Date(2019-9-12), 21, 24));
 
