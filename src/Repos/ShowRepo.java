@@ -46,7 +46,7 @@ public class ShowRepo {
         }
     }
 
-    public void createShow(){
+    public void showToFile(){
         showList.add(new Show(1, 1, "Avatar", "sci-fi", 18, new Date(2019-9-12), 18, 21));
         showList.add(new Show(1, 1, "Avatar", "sci-fi", 18, new Date(2019-9-12), 21, 24));
 
