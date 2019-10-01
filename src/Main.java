@@ -4,16 +4,35 @@ import Repos.ShowRepo;
 import Repos.TheaterRepo;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     private List<Show> showList = new ArrayList<>();
 
     public static void main(String[] args) {
         Main main = new Main(); main.run();
+
     }
 
     public void run(){
+        Scanner input = new Scanner(System.in);
+    boolean run = false;
+
+
+        try {
+            while (run) {
+                System.out.println("****** KINO ******");
+
+            }
+        }
+        catch (InputMismatchException err){
+            System.out.println("Wrong input");
+            input.next();
+        }
+
+
         TheaterRepo tp = new TheaterRepo();
         tp.createTheater(1, 1);
 
