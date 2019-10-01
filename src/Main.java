@@ -20,8 +20,7 @@ public class Main {
 
 
             while (run== 1) {
-                ShowRepo showRepo=new ShowRepo();
-                showRepo.toFile();
+
                 try {
                     System.out.println("****** KINO ****** \n -Press 1 for bookings \n -Press 2 for shows \n -Press 3 for theaters \n -Press 4 to exit the program" );
                     int menuInput= input.nextInt();
@@ -63,6 +62,7 @@ public class Main {
 
     }
     public void showShows() throws NoSuchElementException {
+        try{
         ShowRepo showRepo = new ShowRepo();
         Scanner showScanner = new Scanner(System.in);
         System.out.println("-Press 1 to see current shows \n -Press 2 to create show \n -Press 3 to delete a show");
@@ -73,12 +73,19 @@ public class Main {
                 showRepo.readShow();
                 break;
             case 2:
+                //TODO den her skal laves pænere med en scanner, så man selv kan skrive information om showet
+                System.out.println("Create new show:");
+                showRepo.toFile();
                 break;
             case 3:
+                //ikke lavet endnu
                 break;
             default:
                 System.out.println("wrong input");
                 break;
+        }
+    }catch (InputMismatchException err){
+            System.out.println("wrong input");
         }
     }
 }
