@@ -3,17 +3,23 @@ import Repos.BookingRepo;
 import Repos.ShowRepo;
 import Repos.TheaterRepo;
 
+import java.io.File;
 import java.util.*;
 
 public class Main {
     private List<Show> showList = new ArrayList<>();
 
     public static void main(String[] args) {
-        Main main = new Main(); main.run();
+        Main main = new Main();
+
+        BookingRepo bRepo = new BookingRepo();
+        bRepo.fromFile(new File("textFiles/bookings.txt"));
+
+        main.run(bRepo);
 
     }
 
-    public void run(){
+    public void run(BookingRepo bRepo){
         Scanner input = new Scanner(System.in);
     int run =1;
 
@@ -27,9 +33,7 @@ public class Main {
                     switch (menuInput){
 
                         case 1:
-                            //Bookings
-
-
+                            bookingMenu(bRepo);
                             break;
                         case 2:
                             showShows();
@@ -59,9 +63,59 @@ public class Main {
 
     }
 
-    public void showBooking(){
-//TODO Når bookings er klar skal den tilføjes her
+    public void bookingMenu(BookingRepo bRepo){
+        Scanner input = new Scanner(System.in);
+        boolean bookingRun = true;
+
+        while (bookingRun){
+            System.out.println("Press 1: create a booking." +
+                    "\nPress 2: show booking list." +
+                    "\nPress 9: exit bookings.");
+            try {
+                int bookingChoice = input.nextInt();
+                input.nextLine();
+                switch (bookingChoice){
+                    case 1:
+                        try{
+                            System.out.print("What is customers phoneNumber: ");
+                            int phoneNumber = input.nextInt();
+                            int length = String.valueOf(phoneNumber).length();
+                            if (length != 8){
+                                System.out.println("Invalid phonenumber, booking not created");
+                                break;
+                            }
+                            input.nextLine();
+
+                            System.out.print("What is the show ID: ");
+                            int showId = input.nextInt();
+                            input.nextLine();
+
+                            System.out.print("What is the booking ID: ");
+                            int bookingId = input.nextInt();
+                            input.nextLine();
+
+                            bRepo.createBooking(phoneNumber, showId, bookingId);
+                        }catch (InputMismatchException e){
+                            System.out.println("Wrong input, booking not created");
+                        }
+                    case 2:
+                        bRepo.readBookingList();
+                        break;
+                    case 9:
+                        bookingRun = false;
+                        break;
+                    default:
+                        System.out.println("Not a valid input");
+                        break;
+                }
+            }catch (InputMismatchException err){
+                System.out.println("Wrong input");
+                input.next();
+            }
+        }
     }
+
+
     public void showShows() throws NoSuchElementException {
         try{
         ShowRepo showRepo = new ShowRepo();

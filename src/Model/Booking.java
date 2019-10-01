@@ -33,6 +33,6 @@ public class Booking {
 
     @Override
     public String toString(){
-        return getPhoneNumber() + " " + getShowId() + " " + getBookingId() +"\n";
+        return this.phoneNumber + "\t\t\t" + this.showId + "\t\t\t" + this.bookingId;
     }
 }
