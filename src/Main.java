@@ -21,7 +21,7 @@ public class Main {
 
     public void run(BookingRepo bRepo){
         Scanner input = new Scanner(System.in);
-    int run =1;
+        int run =1;
 
 
 
@@ -128,7 +128,7 @@ public class Main {
                 showRepo.readShow();
                 break;
             case 2:
-                //TODO den her skal laves pænere med en scanner, så man selv kan skrive information om showet
+
                 System.out.println("Create new show:");
                 showRepo.toFile();
                 break;
