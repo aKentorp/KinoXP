@@ -1,4 +1,5 @@
 import Model.Show;
+import Model.Theater;
 import Repos.BookingRepo;
 import Repos.ShowRepo;
 import Repos.TheaterRepo;
@@ -25,6 +26,7 @@ public class Main {
 
     public void run(BookingRepo bRepo){
         Scanner input = new Scanner(System.in);
+        TheaterRepo tRepo = new TheaterRepo();
 
         tryLogin();
 
@@ -45,6 +47,7 @@ public class Main {
                             break;
                         case 3:
                             //theater
+                            tRepo.showTheaters();
                             break;
                         case 4:
                             //quit program
