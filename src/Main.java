@@ -1,3 +1,4 @@
+import Model.Booking;
 import Model.Show;
 import Model.Theater;
 import Repos.BookingRepo;
@@ -9,6 +10,7 @@ import java.util.*;
 
 public class Main {
     private List<Show> showList = new ArrayList<>();
+
 
 
 
@@ -39,7 +41,7 @@ public class Main {
                     switch (menuInput){
 
                         case 1:
-                            bookingMenu(bRepo);
+                            /*bookingMenu(bRepo);*/
                             break;
                         case 2:
                             showShows();
@@ -72,7 +74,7 @@ public class Main {
 
 
 
-    public void bookingMenu(BookingRepo bRepo){
+    /*public void bookingMenu(BookingRepo bRepo){
         Scanner input = new Scanner(System.in);
         boolean bookingRun = true;
 
@@ -99,6 +101,8 @@ public class Main {
                             int showId = input.nextInt();
                             input.nextLine();
 
+
+
                             System.out.print("What is the booking ID: ");
                             int bookingId = input.nextInt();
                             input.nextLine();
@@ -122,7 +126,7 @@ public class Main {
                 input.next();
             }
         }
-    }
+    }*/
 
 
     public void showShows() throws NoSuchElementException {

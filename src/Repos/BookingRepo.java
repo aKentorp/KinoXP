@@ -1,6 +1,7 @@
 package Repos;
 
 import Model.Booking;
+import Model.Show;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -62,5 +63,33 @@ public class BookingRepo {
             System.out.println(bookingList.get(i).toString());
         }
         System.out.println();
+    }
+
+    public void sellTicket(int showID, int phoneNumber){
+        int tempHighestBookingNumber = 0;
+
+        ShowRepo showRepo = new ShowRepo();
+        showRepo.readShow();
+
+        for(Show show : showRepo.showList){
+            if(show.getShowId() == showID && show.getRemainingSeats() > 0){
+                show.setRemainingSeats(show.getRemainingSeats() - 1);
+
+                for(Booking booking : bookingList){
+                    if(booking.getBookingId() > tempHighestBookingNumber){
+                        tempHighestBookingNumber++;
+                    }
+                }
+                Booking newBooking = new Booking(phoneNumber, showID, tempHighestBookingNumber);
+
+                bookingList.add(newBooking);
+            }
+
+            else{
+                System.out.println("No seats left");
+            }
+        }
+
+
     }
 }
