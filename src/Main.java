@@ -8,6 +8,7 @@ import java.util.*;
 
 public class Main {
     private List<Show> showList = new ArrayList<>();
+    private boolean login = false;
 
     public static void main(String[] args) {
         Main main = new Main();
@@ -21,11 +22,11 @@ public class Main {
 
     public void run(BookingRepo bRepo){
         Scanner input = new Scanner(System.in);
-        int run =1;
+
+        tryLogin();
 
 
-
-            while (run== 1) {
+            while (login) {
 
                 try {
                     System.out.println("****** KINO ****** \n -Press 1 for bookings \n -Press 2 for shows \n -Press 3 for theaters \n -Press 4 to exit the program" );
@@ -45,7 +46,7 @@ public class Main {
                         case 4:
                             //quit program
                             System.out.println("Quitting the program...");
-                            run=2;
+                            login = false;
                             break;
                         default:
                             //if the input is not 1-4, it will start the loop over
@@ -142,5 +143,23 @@ public class Main {
     }catch (InputMismatchException err){
             System.out.println("wrong input");
         }
+    }
+
+    public void tryLogin(){
+        Scanner loginScanner = new Scanner(System.in);
+
+        System.out.println("Enter User Name: ");
+        String userName = loginScanner.nextLine();
+
+        System.out.println("Enter Password: ");
+        String password = loginScanner.nextLine();
+
+
+        if(userName.equalsIgnoreCase("admin") && password.equalsIgnoreCase("admin")){
+            login = true;
+        }
+
+
+
     }
 }
