@@ -16,10 +16,10 @@ public class TheaterRepo {
     List<Theater> theaterList = new ArrayList<>();
     Scanner input = new Scanner(System.in);
 
-   /* public TheaterRepo() throws NoSuchElementException {
+   public TheaterRepo() throws NoSuchElementException {
         readTheater();
     }
-*/
+
     public void toFile(){
 
         System.out.println("Theater number: ");
@@ -31,7 +31,7 @@ public class TheaterRepo {
 
 
         try{
-            BufferedWriter bw = new BufferedWriter(new FileWriter("textFiles/theaterInfo.txt",true));
+            BufferedWriter bw = new BufferedWriter(new FileWriter("textFiles/theaterInfo.txt"));
 
             for (Theater th: theaterList) {
                 bw.write(th.toString());
@@ -53,7 +53,6 @@ public class TheaterRepo {
     public void readTheater() throws NoSuchElementException {
         try{
             Scanner fileScan = new Scanner(new File("textFiles/theaterInfo.txt"));
-            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
             while(fileScan.hasNextLine()){
                 int theaterId = fileScan.nextInt();

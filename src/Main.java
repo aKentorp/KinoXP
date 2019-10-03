@@ -165,7 +165,7 @@ public class Main {
                     theaterRepo.toFile();
                 case 2:
                     System.out.println("List of theaters");
-                    theaterRepo.readTheater();
+                    theaterRepo.showTheaters();
             }
 
         }catch (InputMismatchException err){

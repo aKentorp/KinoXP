@@ -15,7 +15,6 @@ public class ShowRepo {
     public void readShow(){
         try{
             Scanner fileScan = new Scanner(new File("textFiles/showInfo.txt"));
-            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
             while(fileScan.hasNextLine()){
 
