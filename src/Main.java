@@ -29,6 +29,7 @@ public class Main {
     public void run(BookingRepo bRepo){
         Scanner input = new Scanner(System.in);
         TheaterRepo tRepo = new TheaterRepo();
+        BookingRepo bookingRepo = new BookingRepo();
 
         tryLogin();
 
@@ -41,6 +42,7 @@ public class Main {
                     switch (menuInput){
 
                         case 1:
+                            bookingRepo.bookingMenu();
                             /*bookingMenu(bRepo);*/
                             break;
                         case 2:
@@ -203,4 +205,6 @@ public class Main {
     public void setLogin(boolean login) {
         this.login = login;
     }
+
+
 }

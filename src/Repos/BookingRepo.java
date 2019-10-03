@@ -92,4 +92,52 @@ public class BookingRepo {
 
 
     }
+    public void bookingMenu() throws NoSuchElementException{
+        Scanner bookingInput = new Scanner(System.in);
+        int choice;
+        BookingRepo br = new BookingRepo();
+        ShowRepo showRepo = new ShowRepo();
+        showRepo.readShow();
+
+        System.out.println("Press 1: Create a Booking");
+        System.out.println("Press 2: Show Booking List");
+        System.out.println("Press 9: Exit Bookings");
+
+        choice = bookingInput.nextInt();
+
+        switch (choice){
+            case 1:
+                System.out.println("Enter Phone Number: ");
+                int phoneNumber = bookingInput.nextInt();
+                int length = String.valueOf(phoneNumber).length();
+                boolean showExists = false;
+
+                if(length != 8 ){
+                    System.out.println("Invalid Phone Number, Booking Canceled");
+                }
+
+                else {
+                    System.out.println("Enter a Show ID: ");
+                    int showID = bookingInput.nextInt();
+
+                    for(Show show : showRepo.showList){
+                        if(show.getShowId() == showID){
+                            showExists = true;
+                        }
+                    }
+                    if(showExists == false){
+                        System.out.println("No Show under that ID");
+                    }
+                    else {
+                        sellTicket(showID, phoneNumber);
+                    }
+                }
+            case 2:
+        }
+
+
+
+
+
+    }
 }
