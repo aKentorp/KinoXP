@@ -9,21 +9,29 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class TheaterRepo {
     List<Theater> theaterList = new ArrayList<>();
+    Scanner input = new Scanner(System.in);
 
-    public TheaterRepo() {
+   /* public TheaterRepo() throws NoSuchElementException {
         readTheater();
     }
+*/
+    public void toFile(){
 
-    public void toFile(int id, int seatNumbers){
-        theaterList.add(new Theater(1, 20));
-        theaterList.add(new Theater(2, 25));
+        System.out.println("Theater number: ");
+        int tempTheaternumber =input.nextInt();
+        System.out.println("Number of seats: ");
+        int tempNumberOfSeats = input.nextInt();
+        theaterList.add(new Theater(tempTheaternumber,tempNumberOfSeats));
+
+
 
         try{
-            BufferedWriter bw = new BufferedWriter(new FileWriter("textFiles/theaterInfo.txt"));
+            BufferedWriter bw = new BufferedWriter(new FileWriter("textFiles/theaterInfo.txt",true));
 
             for (Theater th: theaterList) {
                 bw.write(th.toString());
@@ -31,7 +39,7 @@ public class TheaterRepo {
 
             bw.close();
         }catch (Exception ex){
-            ex.printStackTrace();
+
         }
     }
 
@@ -42,7 +50,7 @@ public class TheaterRepo {
     }
 
 
-    public void readTheater(){
+    public void readTheater() throws NoSuchElementException {
         try{
             Scanner fileScan = new Scanner(new File("textFiles/theaterInfo.txt"));
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -53,7 +61,7 @@ public class TheaterRepo {
                 theaterList.add(new Theater(theaterId, numberOfSeats));
             }
         }catch (Exception ex){
-            ex.printStackTrace();
+
         }
     }
 

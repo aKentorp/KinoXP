@@ -47,7 +47,7 @@ public class Main {
                             break;
                         case 3:
                             //theater
-                            tRepo.showTheaters();
+                            showTheaters();
                             break;
                         case 4:
                             //quit program
@@ -69,6 +69,8 @@ public class Main {
 
 
     }
+
+
 
     public void bookingMenu(BookingRepo bRepo){
         Scanner input = new Scanner(System.in);
@@ -136,7 +138,7 @@ public class Main {
                 break;
             case 2:
 
-                System.out.println("Create new show:");
+                System.out.println("Create new show");
                 showRepo.toFile();
                 break;
             case 3:
@@ -149,6 +151,27 @@ public class Main {
     }catch (InputMismatchException err){
             System.out.println("wrong input");
         }
+    }
+
+    public void showTheaters() throws NoSuchElementException{
+        try {
+            TheaterRepo theaterRepo= new TheaterRepo();
+            Scanner theaterScanner = new Scanner(System.in);
+            System.out.println("-Press 1 to add Theater \n -Press 2 to show theaters");
+            int choice = theaterScanner.nextInt();
+            switch (choice){
+                case 1:
+                    System.out.println("Create a new theater");
+                    theaterRepo.toFile();
+                case 2:
+                    System.out.println("List of theaters");
+                    theaterRepo.readTheater();
+            }
+
+        }catch (InputMismatchException err){
+            System.out.println("Wrong input");
+        }
+
     }
 
     public void tryLogin(){
