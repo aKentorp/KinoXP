@@ -8,6 +8,9 @@ import java.util.*;
 
 public class Main {
     private List<Show> showList = new ArrayList<>();
+
+
+
     private boolean login = false;
 
     public static void main(String[] args) {
@@ -161,5 +164,13 @@ public class Main {
 
 
 
+    }
+
+    public boolean isLogin() {
+        return login;
+    }
+
+    public void setLogin(boolean login) {
+        this.login = login;
     }
 }
