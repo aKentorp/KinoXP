@@ -15,7 +15,7 @@ class showRepoTest {
     Scanner input = new Scanner(System.in);
     private TheaterRepo theaterRepo = new TheaterRepo();
     private ShowRepo showRepo = new ShowRepo();
-    private Show show1 = new Show(1, 2, "The Horror Show!", "horror", 16,  "10-10-2019", 2130, 2300);
+    private Show show1 = new Show(1, 2, "The Horror Show!", "horror", 16,  "10-10-2019", 2130, 2300, 250);
 
     @Test
     void createShow() {

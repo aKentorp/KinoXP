@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ShowTest {
 
-    private Show show = new Show(1, 2,"Avengers", "Action", 18,  "10-10-2019", 1, 2);
+    private Show show = new Show(1, 2,"Avengers", "Action", 18,  "10-10-2019", 1, 2, 250);
     @Test
     void getTitle() {
     }

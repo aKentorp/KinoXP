@@ -13,7 +13,7 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class TheaterRepo {
-    List<Theater> theaterList = new ArrayList<>();
+    ArrayList<Theater> theaterList = new ArrayList<>();
     Scanner input = new Scanner(System.in);
 
    public TheaterRepo() throws NoSuchElementException {
@@ -62,6 +62,12 @@ public class TheaterRepo {
         }catch (Exception ex){
 
          }
+    }
+
+
+    public ArrayList<Theater> getTheaterList(){
+
+       return theaterList;
     }
 
 

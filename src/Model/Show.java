@@ -1,8 +1,12 @@
 package Model;
 
+import Repos.TheaterRepo;
+
 import java.util.Date;
 
 public class Show {
+    TheaterRepo tr = new TheaterRepo();
+
     private int showId;
     private int theaterNumber;
     private String title;
@@ -13,7 +17,7 @@ public class Show {
     private int endTime;
     private int remainingSeats;
 
-    public Show(int showId, int theaterNumber, String title, String genre, int ageLimit, String showDate, int startTime, int endTime) {
+    public Show(int showId, int theaterNumber, String title, String genre, int ageLimit, String showDate, int startTime, int endTime, int remainingSeats) {
         this.showId = showId;
         this.title = title;
         this.genre = genre;
@@ -22,6 +26,8 @@ public class Show {
         this.showDate = showDate;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.remainingSeats = remainingSeats;
+
      }
 
     public int getShowId() {

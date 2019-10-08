@@ -1,3 +1,0 @@
-1 2 Shawshank_redemption Drama 18 21 23 24
-2 3 Avatar Horror 12 12-10-2010 13 15
-4567 4567 Finding_Nemo Sci-fi/Drama 6 12/03/2020 1900 2200
