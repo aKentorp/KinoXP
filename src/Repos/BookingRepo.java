@@ -11,20 +11,27 @@ import java.util.Scanner;
 
 public class BookingRepo {
 
-    List<Booking> bookingList = new ArrayList<>();
+    private int bookingId = 0;
+    private List<Booking> bookingList = new ArrayList<>();
+    private ShowRepo showRepo;
+    private File fileName;
+
+    public BookingRepo(File fileName, ShowRepo showRepo){
+        this.showRepo = showRepo;
+        this.fileName = fileName;
+    }
 
 
-    public void toFile (){
+
+    public void toFile(){
         try{
-            FileWriter fw = new FileWriter("textFiles\\bookings.txt");
-            BufferedWriter bw = new BufferedWriter(fw);
+            BufferedWriter bw = new BufferedWriter(new FileWriter(fileName));
 
-
-            for (int i = 0; i < bookingList.size(); i++){
-                if (i < (bookingList.size()-1)){
-                    bw.write(bookingList.get(i).getPhoneNumber() + "_" + bookingList.get(i).getShowId() + "_" + bookingList.get(i).getBookingId() + "\n");
+            for(int i = 0; i < bookingList.size(); i++){
+                if (i < bookingList.size()-1) {
+                    bw.write(bookingList.get(i).getPhoneNumber() + "%%" + bookingList.get(i).getShowId() + "%%" + bookingList.get(i).getBookingId() + "\n");
                 } else {
-                    bw.write(bookingList.get(i).getPhoneNumber() + "_" + bookingList.get(i).getShowId() + "_" + bookingList.get(i).getBookingId());
+                    bw.write(bookingList.get(i).getPhoneNumber() + "%%" + bookingList.get(i).getShowId() + "%%" + bookingList.get(i).getBookingId());
                 }
             }
             bw.close();
@@ -36,19 +43,24 @@ public class BookingRepo {
 
     }
 
-    public void fromFile(File fileName){ //TODO finish this
+    public void fromFile(){ //TODO finish this
         try {
             Scanner bookingScanner = new Scanner(fileName);
             while(bookingScanner.hasNextLine()){
-                String[] fileLine = bookingScanner.nextLine().split("_");
+                String[] fileLine = bookingScanner.nextLine().split("%%");
                 int phoneNumber = Integer.parseInt(fileLine[0]);
                 int showId = Integer.parseInt(fileLine[1]);
                 int bookingId = Integer.parseInt(fileLine[2]);
 
                 this.bookingList.add(new Booking(phoneNumber, showId, bookingId));
             }
+            if (bookingList.isEmpty()){
+                System.out.println("No bookings yet.");
+            } else {
+                bookingId = bookingList.get(bookingList.size() - 1).getBookingId();
+            }
         } catch(FileNotFoundException e){
-            System.out.println(e);
+            System.out.println("Filen: " + e.getMessage());
         }
     }
 
@@ -58,86 +70,69 @@ public class BookingRepo {
 
     public void readBookingList(){
         System.out.println();
-        System.out.println("Customer Number\t\tshow ID\t\tBooking ID");
+        System.out.println("Booking ID\t\tshow ID\t\tCustomer Number");
         for (int i = 0; i < bookingList.size(); i++){
             System.out.println(bookingList.get(i).toString());
         }
         System.out.println();
     }
 
-    public void sellTicket(int showID, int phoneNumber){
-        int tempHighestBookingNumber = 0;
-
-        ShowRepo showRepo = new ShowRepo();
-        showRepo.readShow();
-
-        for(Show show : showRepo.showList){
-            if(show.getShowId() == showID && show.getRemainingSeats() > 0){
-                show.setRemainingSeats(show.getRemainingSeats() - 1);
-
-                for(Booking booking : bookingList){
-                    if(booking.getBookingId() > tempHighestBookingNumber){
-                        tempHighestBookingNumber++;
-                    }
-                }
-                Booking newBooking = new Booking(phoneNumber, showID, tempHighestBookingNumber);
-
-                bookingList.add(newBooking);
-            }
-
-            else{
-                System.out.println("No seats left");
-            }
-        }
-
-
+    public void sellTicket(int showIndex, int phoneNumber){
+        //Setting now amount of seats for that show
+        showRepo.getShowList().get(showIndex).setRemainingSeats(showRepo.getShowList().get(showIndex).getRemainingSeats() - 1);
     }
-    public void bookingMenu() throws NoSuchElementException{
+
+    public void bookingMenu() throws NoSuchElementException {
         Scanner bookingInput = new Scanner(System.in);
         int choice;
-        BookingRepo br = new BookingRepo();
-        ShowRepo showRepo = new ShowRepo();
-        showRepo.readShow();
 
-        System.out.println("Press 1: Create a Booking");
-        System.out.println("Press 2: Show Booking List");
-        System.out.println("Press 9: Exit Bookings");
+        boolean sentinel = true;
+        do {
+            System.out.println("-Press 1: Create a Booking" +
+                    "\n-Press 2: Show Bookinglist" +
+                    "\n-Press 9: Exit Booking Menu");
 
-        choice = bookingInput.nextInt();
+            choice = bookingInput.nextInt();
+            bookingInput.nextLine();
 
-        switch (choice){
-            case 1:
-                System.out.println("Enter Phone Number: ");
-                int phoneNumber = bookingInput.nextInt();
-                int length = String.valueOf(phoneNumber).length();
-                boolean showExists = false;
+            switch (choice) {
+                case 1:
+                    System.out.println("Enter Phone Number: ");
+                    int phoneNumber = bookingInput.nextInt();
+                    bookingInput.nextLine();
+                    int length = String.valueOf(phoneNumber).length();
+                    boolean showExists = false;
 
-                if(length != 8 ){
-                    System.out.println("Invalid Phone Number, Booking Canceled");
-                }
-
-                else {
-                    System.out.println("Enter a Show ID: ");
-                    int showID = bookingInput.nextInt();
-
-                    for(Show show : showRepo.showList){
-                        if(show.getShowId() == showID){
-                            showExists = true;
+                    if (length != 8) {
+                        System.out.println("Invalid Phone Number, Booking Canceled");
+                    } else {
+                        System.out.println("Enter a Show ID: ");
+                        int showID = bookingInput.nextInt();
+                        bookingInput.nextLine();
+                        int showIndex = -1;
+                        for (int i = 0; i < showRepo.getShowList().size(); i++) {
+                            if (showRepo.getShowList().get(i).getShowId() == showID) {
+                                showIndex = i;
+                            }
+                        }
+                        if (showIndex != -1) {
+                            this.bookingId++;
+                            createBooking(phoneNumber, showID, bookingId);
+                            sellTicket(showIndex, phoneNumber);
+                        }else {
+                            System.out.println("No show with that ID");
                         }
                     }
-                    if(showExists == false){
-                        System.out.println("No Show under that ID");
-                    }
-                    else {
-                        sellTicket(showID, phoneNumber);
-                    }
-                }
-            case 2:
-        }
-
-
-
-
-
+                    toFile();
+                    break;
+                case 2:
+                    readBookingList();
+                    break;
+                case 9:
+                    sentinel = false;
+                    break;
+            }
+        } while (sentinel);
     }
+
 }

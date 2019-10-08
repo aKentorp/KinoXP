@@ -3,6 +3,7 @@ import Repos.ShowRepo;
 import Repos.TheaterRepo;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -14,7 +15,7 @@ import static org.hamcrest.core.IsCollectionContaining.hasItem;
 class showRepoTest {
     Scanner input = new Scanner(System.in);
     private TheaterRepo theaterRepo = new TheaterRepo();
-    private ShowRepo showRepo = new ShowRepo();
+    private ShowRepo showRepo = new ShowRepo(new File("showInfo.txt"));
     private Show show1 = new Show(1, 2, "The Horror Show!", "horror", 16,  "10-10-2019", 2130, 2300, 250);
 
     @Test

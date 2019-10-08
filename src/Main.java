@@ -6,172 +6,107 @@ import Repos.ShowRepo;
 import Repos.TheaterRepo;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Main {
-    private List<Show> showList = new ArrayList<>();
-
-
-
 
     private boolean login = false;
+    private ShowRepo showRepo;
+    private BookingRepo bookingRepo;
+
+    public Main(){
+        try {
+            File showFile = new File("textFiles\\showInfo.txt");
+            showRepo = new ShowRepo(showFile);
+            showRepo.fromFile();
+            File bookingFile = new File("textFiles\\bookings.txt");
+            bookingRepo = new BookingRepo(bookingFile, showRepo);
+            bookingRepo.fromFile();
+        } catch (FileNotFoundException e){
+
+        }
+    }
 
     public static void main(String[] args) {
         Main main = new Main();
-
-        BookingRepo bRepo = new BookingRepo();
-        bRepo.fromFile(new File("textFiles/bookings.txt"));
-
-        main.run(bRepo);
-
+        main.run();
     }
 
-    public void run(BookingRepo bRepo){
+    public void run() {
         Scanner input = new Scanner(System.in);
-        TheaterRepo tRepo = new TheaterRepo();
-        BookingRepo bookingRepo = new BookingRepo();
+
 
         tryLogin();
 
 
-            while (login) {
-
-                try {
-                    System.out.println("****** KINO ****** \n -Press 1 for bookings \n -Press 2 for shows \n -Press 3 for theaters \n -Press 4 to exit the program" );
-                    int menuInput= input.nextInt();
-                    switch (menuInput){
-
-                        case 1:
-                            bookingRepo.bookingMenu();
-                            /*bookingMenu(bRepo);*/
-                            break;
-                        case 2:
-                            showShows();
-                            //shows
-                            break;
-                        case 3:
-                            //theater
-                            showTheaters();
-                            break;
-                        case 4:
-                            //quit program
-                            System.out.println("Quitting the program...");
-                            login = false;
-                            break;
-                        default:
-                            //if the input is not 1-4, it will start the loop over
-                            System.out.println("Not a valid input");
-                            break;
-                    }
-
-
-                }catch (InputMismatchException err){
-                        System.out.println("Wrong input");
-                        input.next();
-                    }
-            }
-
-
-    }
-
-
-
-    /*public void bookingMenu(BookingRepo bRepo){
-        Scanner input = new Scanner(System.in);
-        boolean bookingRun = true;
-
-        while (bookingRun){
-            System.out.println("Press 1: create a booking." +
-                    "\nPress 2: show booking list." +
-                    "\nPress 9: exit bookings.");
+        while (login) {
+            System.out.println();
             try {
-                int bookingChoice = input.nextInt();
-                input.nextLine();
-                switch (bookingChoice){
+                System.out.println("****** KINO ******" +
+                        "\n-Press 1 for booking menu" +
+                        "\n-Press 2 for shows" +
+                        "\n-Press 3 for theaters" +
+                        "\n-Press 9 to exit the program" );
+                int menuInput= input.nextInt();
+                switch (menuInput){
+
                     case 1:
-                        try{
-                            System.out.print("What is customers phoneNumber: ");
-                            int phoneNumber = input.nextInt();
-                            int length = String.valueOf(phoneNumber).length();
-                            if (length != 8){
-                                System.out.println("Invalid phonenumber, booking not created");
-                                break;
-                            }
-                            input.nextLine();
-
-                            System.out.print("What is the show ID: ");
-                            int showId = input.nextInt();
-                            input.nextLine();
-
-
-
-                            System.out.print("What is the booking ID: ");
-                            int bookingId = input.nextInt();
-                            input.nextLine();
-
-                            bRepo.createBooking(phoneNumber, showId, bookingId);
-                        }catch (InputMismatchException e){
-                            System.out.println("Wrong input, booking not created");
-                        }
+                        bookingRepo.bookingMenu();
+                        break;
                     case 2:
-                        bRepo.readBookingList();
+                        showRepo.showMenu();
+                        //shows
+                        break;
+                    case 3:
+                        //theater
+                        showTheaters();
                         break;
                     case 9:
-                        bookingRun = false;
+                        //quit program
+                        System.out.println("Quitting the program...");
+                        login = false;
+                        bookingRepo.toFile();
+                        showRepo.toFile();
                         break;
                     default:
+                        //if the input is not 1-4, it will start the loop over
                         System.out.println("Not a valid input");
                         break;
                 }
+
+
             }catch (InputMismatchException err){
                 System.out.println("Wrong input");
                 input.next();
             }
         }
-    }*/
 
 
-    public void showShows() throws NoSuchElementException {
-        try{
-        ShowRepo showRepo = new ShowRepo();
-        Scanner showScanner = new Scanner(System.in);
-        System.out.println("-Press 1 to see current shows \n -Press 2 to create show \n -Press 3 to delete a show");
-        int input = showScanner.nextInt();
-        switch (input){
-            case 1:
-                System.out.println("Current shows:");
-                showRepo.readShow();
-                break;
-            case 2:
-
-                System.out.println("Create new show");
-                showRepo.toFile();
-                break;
-            case 3:
-                //ikke lavet endnu
-                break;
-            default:
-                System.out.println("wrong input");
-                break;
-        }
-    }catch (InputMismatchException err){
-            System.out.println("wrong input");
-        }
     }
+
+
+
 
     public void showTheaters() throws NoSuchElementException{
         try {
-            TheaterRepo theaterRepo= new TheaterRepo();
+            TheaterRepo theaterRepo = new TheaterRepo();
             Scanner theaterScanner = new Scanner(System.in);
-            System.out.println("-Press 1 to add Theater \n -Press 2 to show theaters");
+            System.out.println("-Press 1 to add Theater" +
+                            "\n-Press 2 to show Theaters" +
+                            "\n-Press 9 to exit Theater Menu");
             int choice = theaterScanner.nextInt();
             switch (choice){
                 case 1:
                     System.out.println("Create a new theater");
                     theaterRepo.toFile();
+                    break;
                 case 2:
                     System.out.println("List of theaters");
                     theaterRepo.showTheaters();
+                    break;
+                case 9:
+                    break;
             }
 
         }catch (InputMismatchException err){
@@ -197,14 +132,4 @@ public class Main {
 
 
     }
-
-    public boolean isLogin() {
-        return login;
-    }
-
-    public void setLogin(boolean login) {
-        this.login = login;
-    }
-
-
 }

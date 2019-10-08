@@ -103,11 +103,17 @@ public class Show {
         this.remainingSeats = remainingSeats;
     }
 
-    public String toString(String overload) {
-        if(overload.equalsIgnoreCase("display")){
-            return "Title: " + this.title +"\n Genre: " + this.genre + "\n Age limit: " + this.ageLimit + "\n Theater number: " + this.theaterNumber + "\n show date: " + this.showDate + "\n Start time: " + this.startTime + "\n End time: " + this.endTime + "\n Remaining seats: "+ this.remainingSeats;
-        }else{
-            return getShowId() + " " + getTheaterNumber() + " " + getTitle() + " " + getGenre() + " " + getAgeLimit() + " " + getShowDate() + " " + getStartTime() + " " + getEndTime() + " " + getRemainingSeats() + "\n";
-        }
+    public String toString() {
+        String tempStart = String.valueOf(this.startTime);
+        char[] startArr = tempStart.toCharArray();
+        String showStart = startArr[0] +""+ startArr[1] + ":" + startArr[2] +""+ startArr[3];
+
+        String tempEnd = String.valueOf(this.endTime);
+        char[] endArr = tempEnd.toCharArray();
+        String showEnd = endArr[0] +""+ endArr[1] + ":" + endArr[2] + "" + endArr[3];
+
+        return "ShowId: " + this.showId + "\nTitle: " + this.title +"\nGenre: " + this.genre + "\nAge limit: " + this.ageLimit +
+                "\nTheater number: " + this.theaterNumber + "\nshow date: " + this.showDate + "\nStart time: " + showStart +
+                "\nEnd time: " + showEnd + "\nRemaining seats: "+ this.remainingSeats;
     }
 }
