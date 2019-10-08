@@ -28,6 +28,7 @@ public class Show {
         this.endTime = endTime;
         this.remainingSeats = remainingSeats;
 
+
      }
 
     public int getShowId() {
@@ -106,7 +107,7 @@ public class Show {
         if(overload.equalsIgnoreCase("display")){
             return "Title: " + this.title +"\n Genre: " + this.genre + "\n Age limit: " + this.ageLimit + "\n Theater number: " + this.theaterNumber + "\n show date: " + this.showDate + "\n Start time: " + this.startTime + "\n End time: " + this.endTime + "\n Remaining seats: "+ this.remainingSeats;
         }else{
-            return getShowId() + " " + getTheaterNumber() + " " + getTitle() + " " + getGenre() + " " + getAgeLimit() + " " + getShowDate() + " " + getStartTime() + " " + getEndTime() + "\n";
+            return getShowId() + " " + getTheaterNumber() + " " + getTitle() + " " + getGenre() + " " + getAgeLimit() + " " + getShowDate() + " " + getStartTime() + " " + getEndTime() + " " + getRemainingSeats() + "\n";
         }
     }
 }

@@ -77,7 +77,7 @@ public class ShowRepo {
         int tempStartTime= input.nextInt();
         System.out.println("End time:");
         int tempEndTime= input.nextInt();
-        int remainingSeats = 0;
+        int remainingSeats = 22;
 
         tr.readTheater();
         ArrayList<Theater> theaterList = tr.getTheaterList();
